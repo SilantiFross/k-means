@@ -1,7 +1,6 @@
 
 import matplotlib.pyplot as plt
 
-
 def draw_graph_clustering(array_of_clusters, points_in_clusters, title):
     """Takes a double array of points and displays them on the graph array[0]->xs array[1]->ys"""
     array_of_color = ['#FF0000', '#00FF00', '#00FFFF', '#7FAFD4', '#8A2BE2',

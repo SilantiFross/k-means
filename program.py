@@ -58,6 +58,7 @@ if __name__ == "__main__":
     ARR_OF_INDEX = search_points_in_cluster()
     remember_points_in_cluster()
     TITLE = 'Start of algorithm k-means'
+    drawer.draw_graph_clustering(MRX_OF_COORD_CLUSTERS, POINTS_IN_CLUSTERS, TITLE)
 
     i = 0
     IS_DONE = False
@@ -73,5 +74,4 @@ if __name__ == "__main__":
 
     print('Iterations: ', i)
     TITLE = 'Result of algorithm k-means'
-    print(POINTS_IN_CLUSTERS)
     drawer.draw_graph_clustering(MRX_OF_COORD_CLUSTERS, POINTS_IN_CLUSTERS, TITLE)
