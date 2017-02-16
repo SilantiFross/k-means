@@ -20,3 +20,10 @@ def read_data_command_line(argv):
         elif opt == '-c':
             count_of_clusters = arg
     return int(count_of_points), int(count_of_clusters)
+
+def conversation_to_matrix(points):
+    matrix = [[], []]
+    for point in points:
+        matrix[0].append(point[0])
+        matrix[1].append(point[1])
+    return matrix
