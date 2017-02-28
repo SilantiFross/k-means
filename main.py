@@ -1,4 +1,3 @@
-
 import math
 import sys
 
@@ -8,7 +7,7 @@ import drawer
 import helper
 
 def euclidean_distance(first_point, second_point):
-    return math.sqrt((second_point[0]-first_point[0])**2 + (second_point[1]-first_point[1])**2)
+    return math.sqrt((second_point[0] - first_point[0]) ** 2 + (second_point[1] - first_point[1]) ** 2)
 
 def calculation_center_mass(points_in_clusters, clusters):
     for points_in_cluster in points_in_clusters:
@@ -62,17 +61,22 @@ def create_points_x_y(points_in_clusters, number_of_clusters):
     return array
 
 if __name__ == "__main__":
-    COUNT_OF_POINTS, COUNT_OF_CLUSTERS = helper.read_data_command_line(sys.argv[1:])
-    MRX_OF_COORD_CLUSTERS = np.random.random_sample((2, COUNT_OF_CLUSTERS))
-    MRX_OF_COORD_POINTS = np.random.random_sample((2, COUNT_OF_POINTS))
+    COUNT_OF_POINTS, COUNT_OF_CLUSTERS, FROM_FILE = helper.read_data_command_line(sys.argv[1:])
+    if FROM_FILE:
+        MRX_OF_COORD_POINTS = np.loadtxt('../coords.txt')
+        MRX_OF_COORD_CLUSTERS = np.loadtxt('../centers.txt')
+    else:
+        MRX_OF_COORD_POINTS = np.random.random_sample((2, COUNT_OF_POINTS))
+        MRX_OF_COORD_CLUSTERS = np.random.random_sample((2, COUNT_OF_CLUSTERS))
 
     points = create_list_of_points(MRX_OF_COORD_POINTS)
     clusters = create_list_of_points(MRX_OF_COORD_CLUSTERS)
 
     points_in_clusters = search_center_for_points(clusters, points)
-    point_in_clusters_x_y = create_points_x_y(points_in_clusters, len(clusters))
-    title = 'Start of algorithm k-means'
-    drawer.draw_graph_clustering(clusters, point_in_clusters_x_y, title)
+    if not FROM_FILE:
+        point_in_clusters_x_y = create_points_x_y(points_in_clusters, len(clusters))
+        TITLE = 'Start of algorithm k-means'
+        drawer.draw_graph_clustering(clusters, point_in_clusters_x_y, TITLE)
 
     is_done = False
     while not is_done:
@@ -84,4 +88,4 @@ if __name__ == "__main__":
 
     TITLE = 'Result of algorithm k-means'
     point_in_clusters_x_y = create_points_x_y(points_in_clusters, len(clusters))
-    drawer.draw_graph_clustering(clusters, point_in_clusters_x_y, title)
+    drawer.draw_graph_clustering(clusters, point_in_clusters_x_y, TITLE)

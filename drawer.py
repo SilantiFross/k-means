@@ -10,12 +10,13 @@ def draw_graph_clustering(clusters, points_in_clusters, title):
                       '#FF8C00', '#228B22', '#DCDCDC', '#ADFF2F', '#7CFC00',
                       '#FFFACD', '#F08080', '#B0C4DE', '#FFA07A', '#20B2AA']
 
-    plt.title(title)
     index_clr = 0
     for point in points_in_clusters:
         plt.plot(point[0], point[1], 'o', color=array_of_color[index_clr], markersize=3)
         index_clr += 1
-    plt.plot(mtrx_of_centers[0], mtrx_of_centers[1], 's', color='blue', markersize=6)
+
+    plt.plot(mtrx_of_centers[0], mtrx_of_centers[1], 's', color='blue', markersize=5)
+    plt.title(title)
     plt.xticks(())
     plt.yticks(())
     plt.show()
